@@ -66,27 +66,9 @@ sudo apt install code
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #sdadd alliases for bash
 instal gitsome
+
+
+#download all the book i have(this maybe requires smw webcawling)
+
