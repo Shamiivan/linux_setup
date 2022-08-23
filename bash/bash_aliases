@@ -1,0 +1,80 @@
+#/bin/bash
+#vim alliases
+alias v='vim'
+######################
+#call the documents directory 
+
+cdoc(){
+  cd ~/../../mnt/c/Users/ivans/OneDrive/Documents/
+}
+
+editbash(){
+  vim ~/.bashrc
+}
+
+#create a newdirectory and enter the directory
+
+mcd(){
+  mkdir $1 && cd $1
+} 
+
+#git
+alias gs='git status'
+
+gc(){
+  echo "Staging all changes"
+  read -p "Commit message: ":msg
+  git commit -a -m $msg
+}
+
+add_repo_to_github(){
+  echo "# personal-website" >> README.md
+  git init
+  git add README.md
+  git commit -m "first commit"
+  git status
+  git branch -M main
+  git status
+  read -p: "Please provide the github link for the project":link
+  git remote add origin $link
+  git push -u origin main
+}
+
+
+#create new cpp project 
+cpp-create(){
+  if [ $# == 1 ]; then
+    name=$1; 
+  else
+    read -p"What the name of the project? ": project_name 
+    name=$project_name
+  fi
+  #gather data about the project
+  echo "Creating $name"
+  mkdir -m 754 -v $name
+  cd $name
+  touch CMakeLists.txt 
+  mkdir src
+  read -p"what the entry point of the project? (main.cpp? driver.cpp?) ": entry
+  touch src/$entry
+  #write hello word
+  sudo cp /home/shami/config/linux_setup/boilerplates/main.cpp /src/$entry
+ 
+ 
+ 
+ 
+  echo "cmake_minimum_required(VERSION 3.5)" >> CMakeLists.txt
+
+  echo project\($name\) >> CMakeLists.txt
+
+  echo set\(CMAKE_CXX_FLAGS \"$\{CMAKE_CXX_FLAGS\} -Wall -Werror -std=c++14\"\) >> CMakeLists.txt
+
+  echo set\(source_dir \"$\{PROJECT_SOURCE_DIR\}/src/\"\) >> CMakeLists.txt
+
+  echo file\(GLOB_RECURSE source_files \"$\{source_dir\}/*.cpp\"\) >> CMakeLists.txt
+  echo add_executable\($name $\{source_files\}\) >> CMakeLists.txt
+ 
+  cmake -G "Unix Makefiles" -DCMAKE_BUILD_TYPE=Debug 
+  echo "Please add the main function " 
+  
+}

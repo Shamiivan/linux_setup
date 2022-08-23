@@ -3,6 +3,7 @@ I have been changing laptop a lot a lately and I was tired of always doing the c
 
 ### Linux distro or wsl?
 Program works for both the distro and wsl
+
 ## Languges
 ### Nodejs
 - get nodejs and npm 
